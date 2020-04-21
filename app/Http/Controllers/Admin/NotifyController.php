@@ -26,19 +26,19 @@ class NotifyController extends Controller
         $sendurl=sprintf($url,$accsstoken);
         //dd($sendurl);
         $keyword=[
-            'name5'=>[
+            'name'=>[
                 'value'=>'123'
             ],
-            'thing3'=>[
+            'thing'=>[
                 'value'=>'32'
             ],
-            'thing6'=>[
+            'thing'=>[
                 'value'=>"4"
             ],
-            'name10'=>[
+            'name'=>[
                 'value'=>"5"
             ],
-            'thing4'=>[
+            'thing'=>[
                 'value'=>"6"
             ]
         ];
