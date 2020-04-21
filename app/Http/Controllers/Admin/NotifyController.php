@@ -42,7 +42,6 @@ class NotifyController extends Controller
                 'value'=>"测试"
             ]
         ];
-        $keyword=json_encode($keyword);
         $data=[
             'access_token'=>$accsstoken,
             'touser'=>$openid->user_open_id,
