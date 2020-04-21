@@ -51,7 +51,7 @@ class NotifyController extends Controller
             'miniprogram_state'=>"formal",
         ];
         $data=json_encode($data);
-        dd($keyword);
+        
         $send=$wx->httpRequest($sendurl,$data);
         //dd($send);
         return response()->json([
