@@ -8,6 +8,7 @@ use App\Lib\WxNotify;
 use App\Models\Make;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NotifyController extends Controller
 {
@@ -20,26 +21,27 @@ class NotifyController extends Controller
         $template_id="ySTGlxFYMme5Q9bHOjnFEjczhvmxYnMiHY5lJcrBnWo";
         $make=new Make();
         $user=new User();
-        $order=$make->where('case_id',$caseid)->get();
+        $order=$make->where('case_id',$caseid)->first();
+        $help=DB::table('t_help')->where('help_id',3)->first();
+        $address=json_decode($help->help_content);
         $openid=$user->where('user_id',$userid)->first();
         $url="https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=%s";
         $sendurl=sprintf($url,$accsstoken);
-        //dd($sendurl);
         $keyword=[
             'name5'=>[
-                'value'=>'黄仲儒'
+                'value'=>$order->user_name
             ],
             'thing3'=>[
-                'value'=>'廖亮东口腔门诊'
+                'value'=>$address->name
             ],
             'thing6'=>[
-                'value'=>"奥园广场"
+                'value'=>$address->address
             ],
             'name10'=>[
                 'value'=>"廖亮东"
             ],
             'thing4'=>[
-                'value'=>"测试"
+                'value'=>"已成功预约"
             ]
         ];
         $data=[
@@ -51,13 +53,9 @@ class NotifyController extends Controller
         ];
         $data=json_encode($data);
         $send=$wx->httpRequest($sendurl,$data);
-        //dd($send);
         return response()->json([
             'msg'=>"ok",
             'data'=>$send
         ]);
-    }
-    public function saveStatus(){
-
     }
 }
