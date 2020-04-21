@@ -26,20 +26,20 @@ class NotifyController extends Controller
         $sendurl=sprintf($url,$accsstoken);
         //dd($sendurl);
         $keyword=[
-            'name01'=>[
-                'value'=>'123'
+            'name5'=>[
+                'value'=>'黄仲儒'
             ],
-            'thing01'=>[
-                'value'=>'32'
+            'thing3'=>[
+                'value'=>'廖亮东口腔门诊'
             ],
-            'thing02'=>[
-                'value'=>"4"
+            'thing6'=>[
+                'value'=>"奥园广场"
             ],
-            'name02'=>[
-                'value'=>"5"
+            'name10'=>[
+                'value'=>"廖亮东"
             ],
-            'thing03'=>[
-                'value'=>"6"
+            'thing4'=>[
+                'value'=>"测试"
             ]
         ];
         $keyword=json_encode($keyword);
@@ -51,7 +51,6 @@ class NotifyController extends Controller
             'miniprogram_state'=>"formal",
         ];
         $data=json_encode($data);
-        
         $send=$wx->httpRequest($sendurl,$data);
         //dd($send);
         return response()->json([
