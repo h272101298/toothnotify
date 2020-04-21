@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('notify/orderSend','Admin\NotifyController@orderSend');
+Route::get('notify/saveStatus','Admin\NotifyController@saveStatus');
