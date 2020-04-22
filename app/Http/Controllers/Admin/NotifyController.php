@@ -15,6 +15,7 @@ class NotifyController extends Controller
     //预约成功推送
     public function orderSend(Request $post){
         $wx=new WxNotify();
+        dd($post);
         $accsstoken=$wx->getAccessToken();
         $userid=$post->userId;
         $caseid=$post->caseId;
@@ -22,6 +23,7 @@ class NotifyController extends Controller
         $make=new Make();
         $user=new User();
         $order=$make->where('case_id',$caseid)->first();
+
         $help=DB::table('t_help')->where('help_id',3)->first();
         $address=json_decode($help->help_content);
         $openid=$user->where('user_id',$userid)->first();
