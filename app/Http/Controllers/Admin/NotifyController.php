@@ -16,8 +16,8 @@ class NotifyController extends Controller
     public function orderSend(Request $post){
         $wx=new WxNotify();
         $accsstoken=$wx->getAccessToken();
-        $userid=$post->userid;
-        $caseid=$post->caseid;
+        $userid=$post->userId;
+        $caseid=$post->caseId;
         $template_id="ySTGlxFYMme5Q9bHOjnFEjczhvmxYnMiHY5lJcrBnWo";
         $make=new Make();
         $user=new User();
