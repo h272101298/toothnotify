@@ -57,7 +57,7 @@ class NotifyController extends Controller
         return response()->json([
             'msg'=>"ok",
             'data'=>$send,
-            'da'=>$post->userId
+            'da'=>$post
         ]);
     }
 }
