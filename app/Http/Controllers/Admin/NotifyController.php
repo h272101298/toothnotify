@@ -30,7 +30,7 @@ class NotifyController extends Controller
         $sendurl=sprintf($url,$accsstoken);
         $keyword=[
             'name5'=>[
-                'value'=>$order->user_name
+                'value'=>$post->user_name
             ],
             'thing3'=>[
                 'value'=>$address->name
