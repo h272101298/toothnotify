@@ -30,7 +30,7 @@ class NotifyController extends Controller
         $sendurl=sprintf($url,$accsstoken);
         $keyword=[
             'name5'=>[
-                'value'=>$post->user_name
+                'value'=>$order->user_name
             ],
             'thing3'=>[
                 'value'=>$address->name
@@ -47,7 +47,7 @@ class NotifyController extends Controller
         ];
         $data=[
             'access_token'=>$accsstoken,
-            'touser'=>$openid['user_open_id'],
+            'touser'=>$openid->user_open_id,
             'template_id'=>$template_id,
             'data'=>$keyword,
             'miniprogram_state'=>"formal",
