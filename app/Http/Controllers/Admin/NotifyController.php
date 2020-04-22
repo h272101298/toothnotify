@@ -47,7 +47,7 @@ class NotifyController extends Controller
         ];
         $data=[
             'access_token'=>$accsstoken,
-            'touser'=>$openid->user_open_id,
+            'touser'=>$openid['user_open_id'],
             'template_id'=>$template_id,
             'data'=>$keyword,
             'miniprogram_state'=>"formal",
