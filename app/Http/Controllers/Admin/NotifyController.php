@@ -21,11 +21,13 @@ class NotifyController extends Controller
         $template_id="ySTGlxFYMme5Q9bHOjnFEjczhvmxYnMiHY5lJcrBnWo";
         $make=new Make();
         $user=new User();
-       // $order=$make->where('case_id',$caseid)->first();
+        $order=$make->where('case_id',$caseid)->first();
 
         $help=DB::table('t_help')->where('help_id',3)->first();
         $address=json_decode($help->help_content);
-        //$openid=$user->where('user_id',$userid)->first();
+        $openid=$user->where('user_id',$userid)->first();
+        var_dump($userid);
+        var_dump($post);
         $url="https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=%s";
         $sendurl=sprintf($url,$accsstoken);
         $keyword=[
@@ -47,7 +49,7 @@ class NotifyController extends Controller
         ];
         $data=[
             'access_token'=>$accsstoken,
-            'touser'=>$post->user_open_id,
+            'touser'=>$openid->user_open_id,
             'template_id'=>$template_id,
             'data'=>$keyword,
             'miniprogram_state'=>"formal",
