@@ -26,8 +26,6 @@ class NotifyController extends Controller
         $help=DB::table('t_help')->where('help_id',3)->first();
         $address=json_decode($help->help_content);
         $openid=$user->where('user_id',$userid)->first();
-        var_dump($userid);
-        var_dump($post);
         $url="https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=%s";
         $sendurl=sprintf($url,$accsstoken);
         $keyword=[
@@ -58,7 +56,8 @@ class NotifyController extends Controller
         $send=$wx->httpRequest($sendurl,$data);
         return response()->json([
             'msg'=>"ok",
-            'data'=>$send
+            'data'=>$send,
+            'da'=>$post->userId
         ]);
     }
 }
