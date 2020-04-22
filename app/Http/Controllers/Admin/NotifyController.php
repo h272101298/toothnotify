@@ -15,8 +15,8 @@ class NotifyController extends Controller
     //预约成功推送
     public function orderSend(Request $post){
         $wx=new WxNotify();
-        dd($post);
         $accsstoken=$wx->getAccessToken();
+        var_dump($post);
         $userid=$post->userId;
         $caseid=$post->caseId;
         $template_id="ySTGlxFYMme5Q9bHOjnFEjczhvmxYnMiHY5lJcrBnWo";
